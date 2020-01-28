@@ -1,0 +1,29 @@
+mat-form-field {
+    width: 100%
+}
+
+.mat-form-field-wrapper {
+    padding: 0;
+}
+
+.button-quote {
+    background-color: #073e89;
+    color: #fff;
+    width: 204px;
+    height: 42px;
+    line-height: 42px;
+}
+
+.additional-travelers {
+    background-color: #f5f5f5;
+    padding: 14px;
+    margin-bottom: 12px
+}
+
+.additional-travelers .title {
+    font-weight: normal;
+}
+
+mat-grid-list.mat-grid-list.ng-star-inserted {
+    height: calc(70px) !important;
+}

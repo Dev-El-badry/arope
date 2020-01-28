@@ -1,0 +1,13 @@
+Show Dates On Info Form (Done)
+
+Handle Errors (Done)
+
+Show Loading (Done)
+
+When Hit Buy GO Up To Page (Done)
+
+Hight Of Welcome Page (Done)
+
+Catch Price And Show It When Load Page 
+
+Date - 30 Days In Individual (Done)

@@ -1,0 +1,48 @@
+<div class="traveler-detials">
+
+    <div class="left-section">
+        <h4 style="color:#0e253a;">YOUR TRIP DETAILS</h4>
+        <div class="media pt-2">
+            <img src="https://siassistance.com/assets/img/picker-user.png">
+            <p class="media-body pl-2">
+                <span class="muted">Age</span><br>
+                <span class="details">
+          {{age}} years<br> </span>
+            </p>
+        </div>
+        <style>
+            .picker .left-section:before {
+                height: 304px;
+            }
+        </style>
+        <div class="media pt-2">
+            <img src="https://siassistance.com/assets/img/picker-traveller.png">
+            <p class="media-body pl-2">
+                <span class="muted">Number of Travellers</span><br>
+                <span class="details">{{numOfTraveler}}</span>
+            </p>
+        </div>
+        <div class="media pt-2">
+            <img src="https://siassistance.com/assets/img/picker-depart.png">
+            <p class="media-body pl-2">
+                <span class="muted">Departure Date</span><br>
+                <span class="details">{{ when | date }}</span>
+            </p>
+        </div>
+        <div class="media pt-2">
+            <img src="https://siassistance.com/assets/img/picker-location.png">
+            <p class="media-body pl-2">
+                <span class="muted">Zone</span><br>
+                <span class="details">{{ zone }}</span>
+            </p>
+        </div>
+        <div class="media pt-2">
+            <img src="https://siassistance.com/assets/img/picker-return.png">
+            <p class="media-body pl-2">
+                <span class="muted">Return Date</span><br>
+                <span class="details">{{ till | date }}</span>
+            </p>
+        </div>
+        <a href="#" mat-raised-button>Edit your trip details</a>
+    </div>
+</div>

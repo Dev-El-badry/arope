@@ -1,0 +1,25 @@
+<section class='navbar-header'>
+    <mat-toolbar class=" navbar-navigation container">
+
+        <div class="logo">
+            <a routerLink="/"><img fxFlex="300px" class="img-responsive" src="assets/images/company-logo.jpg"></a>
+        </div>
+
+        <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.lt-lg>
+            <ul fxLayout fxLayoutGap="20px" class="navigation-links">
+
+                <li><a class="active-link"><span class="mdi mdi-airplane-takeoff "></span>  Travel Insurance</a></li>
+                <li><a class=""><span class="mdi mdi-car "></span>  Car Insurance</a></li>
+                <li><a class=""><span class="mdi mdi-medical-bag "></span>  Medical Insurance</a></li>
+                <li><a class=""><span class="mdi mdi-wheelchair-accessibility "></span>  Personal Accident </a></li>
+            </ul>
+        </div>
+
+        <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.gt-md>
+            <button mat-icon-button (click)="onToggleSideNav()">
+        <mat-icon class="icon-menu">menu</mat-icon>
+      </button>
+        </div>
+    </mat-toolbar>
+
+</section>

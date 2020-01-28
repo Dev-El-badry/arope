@@ -1,0 +1,81 @@
+<section class="get_qoute">
+    <form #f="ngForm" (ngSubmit)="submitForm(f)">
+        <input type="hidden" name="types" [ngModel]="familyDataString" #types="ngModel">
+        <mat-card fxFlex="700px" fxFlex.xs="100%" class='overlay'>
+            <mat-card-title fxLayoutAlign="flex-start">Get a Travel Insurance Quote</mat-card-title>
+            <mat-card-content>
+                <mat-radio-group aria-label="Select an option" color="primary" name="type" ngModel="individual" #typeInput="ngModel" (change)="showField($event)" required>
+                    <mat-radio-button value="individual">Individual</mat-radio-button>
+                    <mat-radio-button value="family">Family</mat-radio-button>
+                </mat-radio-group>
+
+
+                <br><br>
+                <mat-grid-list [cols]="breakpoint" rowHeight="75px" (window:resize)="onResize($event)" gutterSize="10px">
+
+
+                    <mat-grid-tile>
+                        <mat-form-field appearance="outline" class='form-field'>
+                            <mat-label>{{ 'Zone' | uppercase }}</mat-label>
+                            <mat-select name="zone" ngModel #zoneInput="ngModel" required>
+                                <mat-option *ngFor="let country of countries" [value]="country.value">
+                                    {{country.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile *ngIf="!isIndividual">
+                        <mat-form-field appearance="outline" class='form-field'>
+                            <mat-label> {{ 'Date Of Birth' | uppercase }}</mat-label>
+                            <input type="text" matInput (click)="this.showPopup($event.target.value)" [ngModel]="agesString" name="familyAges" #familyAges="ngModel" required>
+
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile *ngIf="isIndividual">
+                        <mat-form-field appearance="outline" class='form-field'>
+                            <mat-label> {{ 'Date Of Birth' | uppercase }}</mat-label>
+                            <input type="text" matInput [matDatepicker]="agePicker" (focus)="agePicker.open()" #inputAge placeholder="Date Of Birth" [max]="minDate" ngModel name="indAge" #indAge="ngModel" required>
+                            <mat-datepicker-toggle matSuffix [for]="agePicker"></mat-datepicker-toggle>
+                            <mat-datepicker (closed)="inputAge.blur()" #agePicker></mat-datepicker>
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-form-field appearance="outline" class='form-field'>
+                            <mat-label> {{ 'When' | uppercase }}</mat-label>
+                            <!-- <input matInput > -->
+
+
+                            <input type="text" matInput [matDatepicker]="picker" name="dateWhen" #inputWhen ngModel #dateWhen="ngModel" required [min]="maxDate" (focus)="picker.open()" placeholder="From">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker (closed)="inputWhen.blur()" #picker></mat-datepicker>
+
+
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile>
+                        <mat-form-field appearance="outline" class='form-field'>
+                            <mat-label> {{ 'Till' | uppercase }}</mat-label>
+                            <!-- <input matInput > -->
+
+                            <input type="text" matInput [matDatepicker]="picker1" name="dateTill" #inputTill ngModel #dateTill="ngModel" required [min]="maxDate" (focus)="picker1.open()" placeholder="To">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker (closed)="inputTill.blur()" #picker1></mat-datepicker>
+
+
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <div class="clearfix"></div>
+
+
+
+                </mat-grid-list>
+                <button *ngIf="!isLoading" class='button-quote' mat-button color="primary" type="submit" [disabled]="f.invalid">{{ 'Get A Quote' | uppercase }}</button>
+                <div *ngIf="isLoading" fxLayoutAlign="center center">
+                    <mat-spinner [diameter]="40"></mat-spinner>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </form>
+</section>

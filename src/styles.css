@@ -1,0 +1,95 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-button.mat-primary[disabled],
+.mat-button.mat-accent[disabled],
+.mat-button.mat-warn[disabled],
+.mat-button[disabled][disabled],
+.mat-icon-button.mat-primary[disabled],
+.mat-icon-button.mat-accent[disabled],
+.mat-icon-button.mat-warn[disabled],
+.mat-icon-button[disabled][disabled],
+.mat-stroked-button.mat-primary[disabled],
+.mat-stroked-button.mat-accent[disabled],
+.mat-stroked-button.mat-warn[disabled],
+.mat-stroked-button[disabled][disabled] {
+    color: #fff !important;
+    background-color: #999 !important;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle,
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+.mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    background-color: #073e89 !important;
+}
+
+.mat-button.mat-primary[disabled],
+.mat-button.mat-accent[disabled],
+.mat-button.mat-warn[disabled],
+.mat-button[disabled][disabled],
+.mat-icon-button.mat-primary[disabled],
+.mat-icon-button.mat-accent[disabled],
+.mat-icon-button.mat-warn[disabled],
+.mat-icon-button[disabled][disabled],
+.mat-stroked-button.mat-primary[disabled],
+.mat-stroked-button.mat-accent[disabled],
+.mat-stroked-button.mat-warn[disabled],
+.mat-stroked-button[disabled][disabled] {
+    color: #073e89 !important;
+    background-color: #e4eaf2 !important;
+}
+
+.md-dialog-container {
+    background-color: #000 !important;
+    width: 250px !important;
+    height: 250px !important
+}
+
+.container {
+    margin: auto 40px !important;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+    width: auto !important;
+}
+
+.main-color {
+    background-color: #073E89;
+    color: #E4EAF2;
+}
+
+.special-title {
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 1000px) {
+    .container {
+        margin: auto 0 !important;
+    }
+    .mat-horizontal-content-container {
+        padding: 0 !important;
+    }
+    .price-card {
+        margin: 25px auto !important;
+        width: 95%;
+    }
+    .traveler-detials {
+        margin-left: 20px;
+        width: 95%;
+    }
+    div#cdk-overlay-0 {
+        max-width: 95% !important;
+    }
+}

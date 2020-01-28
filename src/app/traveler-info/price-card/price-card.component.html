@@ -1,0 +1,12 @@
+<section class='price-card'>
+    <mat-card style="background-color: #013781;">
+        <form>
+            <div class="total-quote">
+                <h4 class='title'>{{ 'Your Total Quote' }}</h4>
+                <h3 class="price">$ {{ totalPrice }}</h3>
+                <button mat-button class="button-quote" (click)="goNextStepper()" [disabled]="isDisabled"> {{ 'Buy' | uppercase }} </button>
+            </div>
+        </form>
+
+    </mat-card>
+</section>

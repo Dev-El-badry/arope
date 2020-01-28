@@ -1,0 +1,18 @@
+<section class='price-card'>
+    <mat-card style="background-color: #013781;">
+        <form #fPriceCard="ngForm" (ngSubmit)="submitFormPriceCard(fPriceCard)">
+            <div class="total-quote">
+                <h4 class='title'>{{ 'Your Total Quote' }}</h4>
+
+                <!-- form input hiddens -->
+                <input type="hidden" name="cardNumber" [(ngModel)]="formList.cardNumber" #cardNumber="ngModel" minlength="16" required />
+                <input type="hidden" name="expirationDate" [(ngModel)]="formList.expirationDate" #expirationDate="ngModel" required />
+                <input type="hidden" name="cvCode" [(ngModel)]="formList.cvCode" #cvCode="ngModel" minlength="4" required />
+                <!-- end form input hiddens -->
+                <h3 class="price">$ {{ totalPrice }}</h3>
+                <button type="submit" mat-button class="button-quote" [disabled]="fPriceCard.invalid || isDisabled"> {{ isDisabled ? 'Successfully' : 'BUY' }} </button>
+            </div>
+        </form>
+
+    </mat-card>
+</section>

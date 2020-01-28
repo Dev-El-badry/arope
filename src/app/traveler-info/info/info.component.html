@@ -1,0 +1,142 @@
+<mat-card>
+    <h2 class="special-title">TRAVELLER</h2>
+
+    <form #fInfo="ngForm" (ngSubmit)="submitTravelerInfo(fInfo)">
+
+        <mat-grid-list cols="2" rowHeight="88px" gutterSize="10px">
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" class='form-field'>
+                    <mat-label> First Name</mat-label>
+                    <input matInput type="text" name="firstName" ngModel #firstName="ngModel" required>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" class='form-field'>
+                    <mat-label> Last Name</mat-label>
+                    <input matInput type="text" name="lastName" ngModel #lastName="ngModel" required>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" class='form-field'>
+                    <mat-label>Gender</mat-label>
+                    <mat-select name="gender" ngModel #gender="ngModel" required>
+                        <mat-option value="male">
+                            Male
+                        </mat-option>
+                        <mat-option value="female">
+                            Female
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" class='form-field'>
+                    <mat-label>Date Of Birthday</mat-label>
+                    <input matInput type="text" name="dateBirth" [matDatepicker]="dateBirthPicker" [ngModel]="datesList['date-0']" #dateBirth="ngModel" required>
+                    <mat-datepicker-toggle matSuffix [for]="dateBirthPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #dateBirthPicker [startAt]="datesList['date-0']"></mat-datepicker>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" class='form-field'>
+                    <mat-label> Email Address</mat-label>
+                    <input matInput type="email" name="emailAddress" ngModel #emailAddress="ngModel" required>
+
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" class='form-field'>
+                    <mat-label> Confirm Email Address</mat-label>
+                    <input matInput type="email" name="cEmailAddress" #cEmailAddress="ngModel" ngModel required>
+
+                </mat-form-field>
+            </mat-grid-tile>
+
+
+
+            <mat-grid-tile colspan="2">
+                <mat-form-field appearance="outline" class='form-field'>
+                    <mat-label> Enter Your Address</mat-label>
+                    <input matInput type="text" name="address" ngModel #address="ngModel" required>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" class='form-field'>
+                    <mat-label> Phone Number</mat-label>
+                    <input matInput type="number" name="phoneNumber" ngModel #phoneNumber="ngModel" required>
+                </mat-form-field>
+            </mat-grid-tile>
+
+
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline" class='form-field'>
+                    <mat-label> Passport Number</mat-label>
+                    <input matInput type="number" name="Passport" ngModel #Passport="ngModel" required>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+
+
+        <div ngModelGroup="additionalTravelers" #additionalTravelers="ngModelGroup" *ngIf="numOfTravelers.length > 1">
+
+            <section class="additional-travelers">
+                <h2 class="title">Additional Traveler Information</h2>
+                {{typesDate | json}}
+                <ng-container *ngFor="let traveler of numOfTravelers | slice:1; let i = index">
+
+                    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="1%">
+                        <div fxFlex="25%">
+                            <mat-form-field appearance="outline" class='form-field'>
+                                <mat-label> First Name</mat-label>
+                                <input matInput type="text" name="tfirstName{{traveler}}" ngModel #tfirstName="ngModel">
+                            </mat-form-field>
+
+
+
+                        </div>
+
+                        <div fxFlex="25%">
+                            <mat-form-field appearance="outline" class='form-field'>
+                                <mat-label> Last Name</mat-label>
+                                <input matInput type="text" name="tlastName{{traveler}}" ngModel #tlastName="ngModel">
+                            </mat-form-field>
+
+
+                        </div>
+
+                        <div fxFlex="25%">
+                            <mat-form-field appearance="outline" class='form-field'>
+                                <mat-label> Birth Of Date</mat-label>
+                                <input matInput type="text" [matDatepicker]="birthDatePicker" name="tbirthDate{{traveler}}" [(ngModel)]="datesList['date-'+traveler]" #tbirthDate="ngModel">
+                                <mat-datepicker-toggle matSuffix [for]="birthDatePicker"></mat-datepicker-toggle>
+                                <mat-datepicker [startAt]="datesList['date-'+traveler]" #birthDatePicker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="25%">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Type</mat-label>
+                                <mat-select name="type{{traveler}}" [(ngModel)]="typesList['type-'+traveler]" #type="ngModel">
+                                    <mat-option *ngFor="let type of types" [value]="type.value">
+                                        {{type.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </ng-container>
+
+
+
+
+            </section>
+
+        </div>
+
+        <mat-checkbox color="primary">I have read and accepted <a href="http://207.154.195.214/TravelWording.pdf" target="_blank">general conditions.</a></mat-checkbox>
+        <br> <br>
+        <button type="submit" mat-button class='button-quote' [disabled]="fInfo.invalid">{{ 'complete purchase' | uppercase }} <mat-icon>arrow_right_alt</mat-icon></button>
+    </form>
+</mat-card>
