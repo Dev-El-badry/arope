@@ -62,7 +62,7 @@ import { SiteSettingsService } from '../../shared/site_settings.service';
                     matInput
                     [matDatepicker]="picker"
                     placeholder="Age Of Travel"
-                    ngModel
+                    [ngModel]="dataList.dates['date-'+i]"
                     name="date-{{ i }}"
                     #ages="ngModel"
                     [max]="minDate"
@@ -78,7 +78,20 @@ import { SiteSettingsService } from '../../shared/site_settings.service';
                </div>
              
 
-              
+              <div *ngIf="!result; then thenBlock1 else elseBlock1;"></div>
+              <ng-template #thenBlock1>
+              <div ngModelGroup="types" fxFlex="20%"  class="margin-right-fix">
+                <mat-form-field *ngIf="i!=0">
+                  <mat-label>Type</mat-label>
+                  <mat-select name="type-{{i}}" ngModel #type="ngModel" required>
+                    <mat-option *ngFor="let type of types" [value]="type.value">
+                      {{type.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              </ng-template>
+              <ng-template #elseBlock1>
               <div ngModelGroup="types" fxFlex="20%"  class="margin-right-fix">
                 <mat-form-field *ngIf="i!=0">
                   <mat-label>Type</mat-label>
@@ -89,6 +102,8 @@ import { SiteSettingsService } from '../../shared/site_settings.service';
                   </mat-select>
                 </mat-form-field>
               </div>
+              </ng-template>
+             
               
             
               <div 
@@ -104,13 +119,12 @@ import { SiteSettingsService } from '../../shared/site_settings.service';
               color="warn"
               >
                 <mat-icon style="    margin: 18px;
-    /* border: 1px solid lightgray; */
-    line-height: 10px;
-    padding: 2px;
-    border-radius: 5px;
-    background: salmon;
-}">minimize</mat-icon>
-</div>
+                    line-height: 10px;
+                    padding: 2px;
+                    border-radius: 5px;
+                    background: salmon;
+                }">minimize</mat-icon>
+                </div>
 
              
 
@@ -167,6 +181,7 @@ import { SiteSettingsService } from '../../shared/site_settings.service';
 export class AgeTravelerComponent implements OnInit{
   elements = [];
   minDate;
+  result;
   types = [
     {value: 'spouse', viewValue: 'Spouse'},
     {value: 'kid', viewValue: 'Kid'}
@@ -201,19 +216,12 @@ export class AgeTravelerComponent implements OnInit{
       
       this.dataList.dates = genJson.dates;
       this.dataList.types = genJson.types;
-      if((!this.site_settings.isEmpty(this.dataList.dates)) && (!this.site_settings.isEmpty(this.dataList.types))) {
-
-        this.dataList.dates = '';
-        this.dataList.types = '';
-      }
-
-      console.log('datalist dates', this.dataList.dates);
-      console.log('datalist types', this.dataList.types);
-
 
     } else {
       this.elements.push(this.elements.length);
     }
+    this.result = result;
+    console.log('result', result);
   }
 
 

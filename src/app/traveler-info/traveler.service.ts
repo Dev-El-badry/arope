@@ -70,7 +70,7 @@ export class TravelerService {
     this.odoo.call_odoo_function('travel_agency', 'demo', 'demo',
     'travel.excess', 'search_read', data).subscribe(res => {
       this.loadResObjExcess.next(res);
-    
+      this.uiService.loadingChangedStatus.next(false);
     });
   }
 
